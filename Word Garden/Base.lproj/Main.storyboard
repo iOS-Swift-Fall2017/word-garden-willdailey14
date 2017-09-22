@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,116 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Word_Garden" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How Many Guesses to Uncover the Hidden Word?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yG-BO-JdH">
+                                <rect key="frame" x="16" y="20" width="343" height="93"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36s-GE-jpG">
+                                <rect key="frame" x="16" y="108" width="343" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="e3l-Ti-CpU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="351-ag-N4z">
+                                <rect key="frame" x="94" y="160" width="187" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jJQ-BR-Ecv">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="pV9-V7-NKh"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <action selector="doneKeyPressed:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="6HH-6K-JnR"/>
+                                            <action selector="guessLetterFieldChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="pQE-u6-kla"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afb-cH-pvU">
+                                        <rect key="frame" x="42" y="0.0" width="145" height="30"/>
+                                        <state key="normal" title="Guess this Letter"/>
+                                        <connections>
+                                            <action selector="guessButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hVp-ld-tPV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="afb-cH-pvU" firstAttribute="leading" secondItem="jJQ-BR-Ecv" secondAttribute="trailing" constant="12" id="oDE-GS-kWx"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've made 0 Guesses" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u52-9q-bmX">
+                                <rect key="frame" x="16" y="205" width="343" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="vgd-Ve-mZU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zuc-Nd-33p">
+                                <rect key="frame" x="141" y="283" width="93" height="30"/>
+                                <state key="normal" title="Play Again"/>
+                                <connections>
+                                    <action selector="playAgainButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cgh-zq-4Or"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flower8" translatesAutoresizingMaskIntoConstraints="NO" id="omv-1J-ODS">
+                                <rect key="frame" x="16" y="345" width="343" height="288"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="288" id="qZ4-Sv-cNP"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="351-ag-N4z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="94" id="9Zn-0P-nJY"/>
+                            <constraint firstItem="36s-GE-jpG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="88" id="Dz3-kB-Q4u"/>
+                            <constraint firstItem="u52-9q-bmX" firstAttribute="top" secondItem="351-ag-N4z" secondAttribute="bottom" constant="15" id="FfE-dp-vw3"/>
+                            <constraint firstItem="36s-GE-jpG" firstAttribute="trailing" secondItem="u52-9q-bmX" secondAttribute="trailing" id="JGd-zM-bKm"/>
+                            <constraint firstItem="2yG-BO-JdH" firstAttribute="leading" secondItem="36s-GE-jpG" secondAttribute="leading" id="McL-z1-cuy"/>
+                            <constraint firstItem="351-ag-N4z" firstAttribute="top" secondItem="36s-GE-jpG" secondAttribute="bottom" constant="8" symbolic="YES" id="Wwq-wJ-EXP"/>
+                            <constraint firstItem="36s-GE-jpG" firstAttribute="leading" secondItem="u52-9q-bmX" secondAttribute="leading" id="Zj2-nc-OvK"/>
+                            <constraint firstItem="u52-9q-bmX" firstAttribute="centerX" secondItem="Zuc-Nd-33p" secondAttribute="centerX" id="bcr-3z-Clg"/>
+                            <constraint firstItem="2yG-BO-JdH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="eSA-In-d0X"/>
+                            <constraint firstItem="u52-9q-bmX" firstAttribute="trailing" secondItem="omv-1J-ODS" secondAttribute="trailing" id="emk-JW-FNM"/>
+                            <constraint firstItem="2yG-BO-JdH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="fcI-BC-caw"/>
+                            <constraint firstItem="36s-GE-jpG" firstAttribute="centerX" secondItem="351-ag-N4z" secondAttribute="centerX" id="ggO-f8-1zT"/>
+                            <constraint firstItem="2yG-BO-JdH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jTC-t3-4rT"/>
+                            <constraint firstItem="2yG-BO-JdH" firstAttribute="trailing" secondItem="36s-GE-jpG" secondAttribute="trailing" id="joE-dc-qvw"/>
+                            <constraint firstItem="u52-9q-bmX" firstAttribute="leading" secondItem="omv-1J-ODS" secondAttribute="leading" id="oas-6Y-ZFf"/>
+                            <constraint firstItem="Zuc-Nd-33p" firstAttribute="top" secondItem="u52-9q-bmX" secondAttribute="bottom" constant="8" symbolic="YES" id="qfw-rl-lcg"/>
+                            <constraint firstItem="omv-1J-ODS" firstAttribute="top" secondItem="Zuc-Nd-33p" secondAttribute="bottom" constant="32" id="t6l-Dx-ax3"/>
+                            <constraint firstItem="Zuc-Nd-33p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="141" id="urx-QY-Ltq"/>
+                            <constraint firstItem="351-ag-N4z" firstAttribute="top" secondItem="2yG-BO-JdH" secondAttribute="bottom" constant="47" id="vhU-V9-dA8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="flowerImageView" destination="omv-1J-ODS" id="4kG-MO-dfA"/>
+                        <outlet property="guessCountLabel" destination="u52-9q-bmX" id="Fmo-HW-nnP"/>
+                        <outlet property="guessLetterButton" destination="afb-cH-pvU" id="BgM-PZ-GuE"/>
+                        <outlet property="guessLetterField" destination="jJQ-BR-Ecv" id="inZ-JG-tal"/>
+                        <outlet property="playAgainButton" destination="Zuc-Nd-33p" id="Vzy-Bm-vYQ"/>
+                        <outlet property="userGuessLabel" destination="36s-GE-jpG" id="IMO-0m-xTn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-98.400000000000006" y="117.39130434782609"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="flower8" width="221" height="398"/>
+    </resources>
 </document>
